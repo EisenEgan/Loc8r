@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-// address mongodb://heroku_sw0nzdqh:92ckrbvr8nj7icqnaee6k8cdl9@ds135669.mlab.com:35669/heroku_sw0nzdqh
 
 var openingTimeSchema = new mongoose.Schema({
   days: {type: String, required: true},
