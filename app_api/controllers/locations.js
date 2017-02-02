@@ -24,6 +24,7 @@ module.exports.locationsListByDistance = function (req, res) {
   var lng = parseFloat(req.query.lng);
   var lat = parseFloat(req.query.lat);
   var maxDistance = parseInt(req.query.maxDistance)
+  console.log("lng=" + lng + " lat=" + lat + " maxD=" + maxDistance);
   var point = {
     type: "Point",
     coordinates: [lng, lat]
@@ -55,6 +56,7 @@ module.exports.locationsListByDistance = function (req, res) {
           _id: doc.obj._id
         })
       })
+      console.log(locations);
       sendJsonResponse(res, 200, locations);
     }
   });
