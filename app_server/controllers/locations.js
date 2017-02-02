@@ -2,11 +2,13 @@ var request = require('request');
 var apiOptions = {
   server: "http://localhost:3000"
 };
-var api_key = require('../api_key/api_key').api_key;
+var api_key;
 
 if (process.env.NODE_ENV === 'production') {
   apiOptions.server = "https://damp-scrubland-98716.herokuapp.com/";
   api_key = process.env.API_KEY;
+} else {
+  api_key = require('../api_key/api_key').api_key;
 }
 
 
