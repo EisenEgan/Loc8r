@@ -40,6 +40,7 @@ module.exports.locationsListByDistance = function (req, res) {
     return;
   }
   Loc.geoNear(point, geoOptions, function(err, results, stats) {
+    console.log("Loc.geoNear results = ", results)
     var locations = [];
     if (err) {
       sendJsonResponse(res, 404, err);

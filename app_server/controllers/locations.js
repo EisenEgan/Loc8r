@@ -58,7 +58,7 @@ module.exports.homelist = function(req, res) {
     qs: {
       lng: -0.7992599,
       lat: 51.378091,
-      maxDistance: 20000
+      maxDistance: 200000
     }
   };
   request(
@@ -70,8 +70,7 @@ module.exports.homelist = function(req, res) {
         for (i=0; i<data.length; i++) {
           data[i].distance = _formatDistance(data[i].distance);
         }
-      }
-      console.log(data)
+      };
       renderHomepage(req, res, data);
   })
 }
