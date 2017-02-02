@@ -71,7 +71,7 @@ module.exports.homelist = function(req, res) {
           data[i].distance = _formatDistance(data[i].distance);
         }
       }
-      console.log('success!')
+      console.log(data)
       renderHomepage(req, res, data);
   })
 }
