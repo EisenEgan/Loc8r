@@ -15,7 +15,8 @@ if (process.env.NODE_ENV === 'production') {
 var renderHomepage = function(req, res, responseBody) {
   var message;
   if (!(responseBody instanceof Array)) {
-    message = "API lookup error";
+    message= responseBody;
+    //message = "API lookup error";
     responseBody = [];
   } else {
     if (!responseBody.length) {
