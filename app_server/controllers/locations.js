@@ -7,7 +7,8 @@ var api_key;
 if (process.env.NODE_ENV === 'production') {
   apiOptions.server = "https://damp-scrubland-98716.herokuapp.com/";
   api_key = process.env.API_KEY;
-} else {
+}
+if (process.env.NODE_ENV !== 'production') {
   api_key = require('../api_key/api_key').api_key;
 }
 
@@ -15,8 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 var renderHomepage = function(req, res, responseBody) {
   var message;
   if (!(responseBody instanceof Array)) {
-    message= responseBody;
-    //message = "API lookup error";
+    message = "API lookup error";
     responseBody = [];
   } else {
     if (!responseBody.length) {
@@ -71,6 +71,7 @@ module.exports.homelist = function(req, res) {
           data[i].distance = _formatDistance(data[i].distance);
         }
       }
+      console.log('success!')
       renderHomepage(req, res, data);
   })
 }
