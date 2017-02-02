@@ -63,6 +63,7 @@ module.exports.homelist = function(req, res) {
   request(
     requestOptions,
     function(err, response, body) {
+      console.log("locations after= " + JSON.stringify(body));
       var i, data;
       data = body;
       if (response.statusCode === 200 && data.length) {
@@ -70,7 +71,7 @@ module.exports.homelist = function(req, res) {
           data[i].distance = _formatDistance(data[i].distance);
         }
       };
-      console.log(data);
+      console.log("locations after sort= " + JSON.stringify(data));
       renderHomepage(req, res, data);
   })
 }
