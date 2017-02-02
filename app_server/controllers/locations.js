@@ -2,14 +2,16 @@ var request = require('request');
 var apiOptions = {
   server: "http://localhost:3000"
 };
-var api_key;
+var api_key, path_prefix;
 
 if (process.env.NODE_ENV === 'production') {
   apiOptions.server = "https://damp-scrubland-98716.herokuapp.com/";
   api_key = process.env.API_KEY;
+  path_prefix = "";
 }
 if (process.env.NODE_ENV !== 'production') {
   api_key = require('../api_key/api_key').api_key;
+  path_prefix = "/";
 }
 
 var renderHomepage = function(req, res, responseBody) {
@@ -49,7 +51,7 @@ var _formatDistance = function (distance) {
 /* Get 'home' page */
 module.exports.homelist = function(req, res) {
   var requestOptions, path;
-  path = 'api/locations/';
+  path = path_prefix + 'api/locations/';
   requestOptions = {
     url: apiOptions.server + path,
     method: "GET",
@@ -106,7 +108,7 @@ var _showError = function(req, res, status) {
 
 var getLocationInfo = function(req, res, callback) {
   var requestOptions, path;
-  path = "/api/locations/" + req.params.locationid;
+  path = path_prefix + "api/locations/" + req.params.locationid;
   requestOptions = {
     url: apiOptions.server + path,
     method: "GET",
@@ -155,7 +157,7 @@ module.exports.addReview = function(req, res) {
 module.exports.doAddReview = function(req, res) {
   var requestOPtions, path, locationid, postdata;
   locationid = req.params.locationid;
-  path = "/api/locations/" + locationid + "/reviews";
+  path = path_prefix + "api/locations/" + locationid + "/reviews";
   postdata = {
     author: req.body.name,
     rating: parseInt(req.body.rating, 10),
