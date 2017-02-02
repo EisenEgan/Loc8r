@@ -49,7 +49,7 @@ var _formatDistance = function (distance) {
 /* Get 'home' page */
 module.exports.homelist = function(req, res) {
   var requestOptions, path;
-  path = '/api/locations/';
+  path = 'api/locations/';
   requestOptions = {
     url: apiOptions.server + path,
     method: "GET",
