@@ -12,9 +12,6 @@ if (process.env.NODE_ENV !== 'production') {
   api_key = require('../api_key/api_key').api_key;
 }
 
-console.log('api_key=' + api_key);
-
-
 var renderHomepage = function(req, res, responseBody) {
   var message;
   if (!(responseBody instanceof Array)) {
@@ -52,7 +49,7 @@ var _formatDistance = function (distance) {
 /* Get 'home' page */
 module.exports.homelist = function(req, res) {
   var requestOptions, path;
-  path = '/api/locations';
+  path = '/api/locations/';
   requestOptions = {
     url: apiOptions.server + path,
     method: "GET",
@@ -73,6 +70,7 @@ module.exports.homelist = function(req, res) {
           data[i].distance = _formatDistance(data[i].distance);
         }
       };
+      console.log(data);
       renderHomepage(req, res, data);
   })
 }

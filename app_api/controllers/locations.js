@@ -23,7 +23,6 @@ var sendJsonResponse = function(res, status, content) {
 module.exports.locationsListByDistance = function (req, res) {
   var lng = parseFloat(req.query.lng);
   var lat = parseFloat(req.query.lat);
-  console.log(req.query.maxDistance);
   var maxDistance = parseInt(req.query.maxDistance);
   var point = {
     type: "Point",
