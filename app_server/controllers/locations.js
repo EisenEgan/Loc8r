@@ -12,6 +12,8 @@ if (process.env.NODE_ENV !== 'production') {
   api_key = require('../api_key/api_key').api_key;
 }
 
+console.log('api_key=' + api_key);
+
 
 var renderHomepage = function(req, res, responseBody) {
   var message;
