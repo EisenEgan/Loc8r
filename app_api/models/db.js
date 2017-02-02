@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 
 var dbURI = 'mongodb://localhost/Loc8r';
 if (process.env.NODE_ENV === 'production') {
+  console.log("mongolab dbURI used")
+  console.log("dbURI = " + process.env.MONGODB_URI);
   dbURI = process.env.MONGODB_URI;
 }
 mongoose.connect(dbURI);
