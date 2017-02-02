@@ -40,8 +40,6 @@ module.exports.locationsListByDistance = function (req, res) {
     return;
   }
   Loc.geoNear(point, geoOptions, function(err, results, stats) {
-    console.log('results= ' + JSON.stringify(results));
-    console.log('stats= ' + JSON.stringify(stats));
     var locations = [];
     if (err) {
       sendJsonResponse(res, 404, err);
@@ -56,7 +54,6 @@ module.exports.locationsListByDistance = function (req, res) {
           _id: doc.obj._id
         })
       })
-      console.log("locations before= " + JSON.stringify(locations));
       sendJsonResponse(res, 200, locations);
     }
   });
