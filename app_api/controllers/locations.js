@@ -30,7 +30,7 @@ module.exports.locationsListByDistance = function (req, res) {
   };
   var geoOptions = {
     spherical: true,
-    maxDistance: maxDistance,
+    maxDistance: maxDistance*1000,
     num: 10
   };
   if ((!lng && lng!==0) || (!lat && lat!==0)) {
